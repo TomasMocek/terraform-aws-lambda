@@ -33,10 +33,11 @@ resource "aws_lambda_function" "vpc" {
   timeout                        = "${var.timeout}"
   role                           = "${aws_iam_role.main.arn}"
   reserved_concurrent_executions = "${var.reserved_concurrent_executions}"
+  vpc_id                         = "${var.vpc_id}"
 
   vpc_config {
     subnet_ids         = ["${var.subnet_ids}"]
-    security_group_ids = ["${aws_security_group.vpc.*.id}"]
+    security_group_ids = ["${var.security_group_ids}"]
   }
 
   environment {
@@ -85,10 +86,11 @@ resource "aws_lambda_function" "vpc_s3" {
   timeout                        = "${var.timeout}"
   role                           = "${aws_iam_role.main.arn}"
   reserved_concurrent_executions = "${var.reserved_concurrent_executions}"
+  vpc_id                         = "${var.vpc_id}"
 
   vpc_config {
     subnet_ids         = ["${var.subnet_ids}"]
-    security_group_ids = ["${aws_security_group.vpc.*.id}"]
+    security_group_ids = ["${var.security_group_ids}"]
   }
 
   environment {

@@ -45,6 +45,12 @@ variable "subnet_ids" {
   default     = []
 }
 
+variable "security_group_ids" {
+  type        = "list"
+  description = "A list of security group IDs associated with the Lambda function."
+  default     = []
+}
+
 variable "attach_vpc_config" {
   description = "Set to true in order to set the vpc config using the following variables: subnet_ids and security_group_ids."
   default     = "false"
